@@ -1,0 +1,156 @@
+body {
+  background-color: #FFD23F; /* Bright yellow background */
+  font-family: -apple-system, BlinkMacSystemFont, "San Francisco", Roboto, "Segoe UI", Helvetica, "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+/* Style the modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  font-size: 1em; /* Large text size for emphasis */  
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 5em 0px;
+  border: 3px solid #333; /* Bold black border */
+  border-radius: 5px; /* Slightly rounded corners for the tiles */
+  width: 75%; /* Could be more or less, depending on screen size */
+  text-align: center;
+  box-shadow: 4px 4px 0px #333; /* Add a shadow to give a lifted effect */
+
+}
+
+.instructions {
+  font-size: 1.5em; /* Large text size for emphasis */
+  margin: auto auto;
+  font-weight: bold;
+  min-width: 100;
+  max-width: 20em;
+}
+
+/* The Start Button */
+#start-button {
+  margin: 3em 0em 1em;
+  border: 3px solid #333; /* Bold black border */
+  border-radius: 12px; /* Slightly rounded corners for the tiles */
+  cursor: pointer;
+  box-shadow: 2px 2px 0px #333; /* Add a shadow to give a lifted effect */
+  box-shadow: 4px 4px 0px #0f39234f;
+  color: white;
+  /* -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+  text-shadow: 2px 2px 1px #333; */
+  background-color: #0079ff;
+  letter-spacing: 0.5px;
+  font-size: 1.5em; /* Large text size for emphasis */    
+  padding: 0.8em 1.5em;  
+}
+
+/* ... existing styles ... */
+
+
+
+#game-container {
+  text-align: center;
+}
+
+
+.tile {
+  display: inline-block;
+  margin: 8px;
+  width: 60px !important; /* Fixed width */
+  height: 60px !important; /* Fixed height */
+  line-height: 60px; /* Center the text vertically */
+  border: 3px solid #333; /* Bold black border */
+  border-radius: 5px; /* Slightly rounded corners for the tiles */
+  background-color: #FFFFFF; /* White tile background */
+  color: #333; /* Dark text color */
+  font-size: 24px; /* Larger font size for better visibility */
+  font-weight: bold; /* Bold font weight */
+  cursor: grab; /* Cursor indicates that the tile is draggable */
+  user-select: none;
+  box-shadow: 4px 4px 0px #333; /* Add a shadow to give a lifted effect */
+  text-align: center; /* Ensure the text is centered horizontally */
+}
+
+.draggable-container {
+  display: inline-block;
+  background-color: #FFD23F; /* Match the background of the body */
+  margin: 3em;
+}
+
+/* Additional styles for visual feedback during dragging */
+.draggable--over {
+  box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.5);
+  background-color: rgba(255,255,255, 0.6);
+}
+
+.draggable-mirror {
+  background-color: #ca8cff;
+  width: 60px; /* Fixed width */
+  height: 60px; /* Fixed height */
+}
+
+.draggable--original {
+  background-color: rgba(22, 73, 240, 0.449);
+}
+
+#result-container {
+  height: 5em;
+}
+
+#result-message {
+  text-align: center;
+  font-size: 1.5em; /* Large text size for emphasis */
+  font-weight: bold; /* Make the text bold */
+  height: 28px;
+  padding: 15px 25px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Additional styling when the answer is correct */
+.correct-answer {
+  transition: all 0.2s ease-in-out; /* Smooth transition for any changes */
+  background-color: #44ed93; /* A green similar to the Draggable JS elements */
+  border: 3px solid #333; /* Bold black border */
+  border-radius: 12px; /* Slightly rounded corners for the tiles */
+  box-shadow: 4px 4px 0px #0f39234f
+}
+
+.tile.correct-position {
+  background-color: #44ed93; /* A green similar to the Draggable JS elements */
+  color: white; /* White text for better contrast */
+  transition: background-color 0.3s ease-in-out;
+}
+
+@keyframes wave-animation {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.tile.wave {
+  animation: wave-animation 0.3s ease-in-out;
+}
+
+#timer {
+  text-align: center;
+  font-size: 2em;
+  margin: 1.5em;
+  /* Add any additional styling you need here */
+}
