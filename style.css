@@ -106,10 +106,10 @@ body {
 /* Media query for mobile screens */
 @media screen and (max-width: 600px) {
   .tile {
-      width: 32px !important; /* Adjust for mobile */
-      height: 32px !important; /* Adjust for mobile */
+      width: 40px !important; /* Adjust for mobile */
+      height: 40px !important; /* Adjust for mobile */
       font-size: 24px; /* Adjust font size for mobile */
-      line-height: 32px; /* Center the text vertically */      
+      line-height: 40px; /* Center the text vertically */      
       margin: 6px;
       box-shadow: 3px 3px 0px #333; /* Add a shadow to give a lifted effect */
   }

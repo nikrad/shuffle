@@ -37,7 +37,7 @@ function formatTime(milliseconds) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  const words = ["STRIVEN", "INVERTS"];
+  const words = ["INSULT", "SUNLIT"];
   let currentWord = words[0].split("");
 
   // Reference to the modal and start button
