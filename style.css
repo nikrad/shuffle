@@ -36,6 +36,7 @@ body {
   font-weight: bold;
   min-width: 100;
   max-width: 20em;
+  padding: 0 10px;
 }
 
 /* The Start Button */
@@ -88,7 +89,39 @@ body {
 .draggable-container {
   display: inline-block;
   background-color: #FFD23F; /* Match the background of the body */
-  margin: 3em;
+  margin: 0.75em;
+}
+
+#result-message {
+  text-align: center;
+  font-size: 1.5em; /* Large text size for emphasis */
+  font-weight: bold; /* Make the text bold */
+  height: 28px;
+  padding: 15px 25px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Media query for mobile screens */
+@media screen and (max-width: 600px) {
+  .tile {
+      width: 32px !important; /* Adjust for mobile */
+      height: 32px !important; /* Adjust for mobile */
+      font-size: 24px; /* Adjust font size for mobile */
+      line-height: 32px; /* Center the text vertically */      
+      margin: 6px;
+      box-shadow: 3px 3px 0px #333; /* Add a shadow to give a lifted effect */
+  }
+
+  .draggable-container {
+    margin: 0.2em;
+  }
+
+  #result-message {
+    font-size: 1.25em; /* Large text size for emphasis */
+    height: 1.25em;
+  }
 }
 
 /* Additional styles for visual feedback during dragging */
@@ -111,16 +144,7 @@ body {
   height: 5em;
 }
 
-#result-message {
-  text-align: center;
-  font-size: 1.5em; /* Large text size for emphasis */
-  font-weight: bold; /* Make the text bold */
-  height: 28px;
-  padding: 15px 25px;
-  width: fit-content;
-  margin-left: auto;
-  margin-right: auto;
-}
+
 
 /* Additional styling when the answer is correct */
 .correct-answer {
