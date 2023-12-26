@@ -37,7 +37,7 @@ function formatTime(milliseconds) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  const words = ["HAVENS", "SHAVEN"];
+  const words = ["PIRATED", "PARTIED"];
   let currentWord = words[0].split("");
 
   // Reference to the modal and start button
@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
       .join("");
     if (currentOrder === words[1]) {
       stopTimer();
-      resultMessage.textContent = "Bravo!";
+      resultMessage.textContent = "Woot!";
       resultMessage.className = "correct-answer";
       draggable.destroy();
       setTimeout(() => {

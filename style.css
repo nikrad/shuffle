@@ -40,6 +40,8 @@ body {
 
 /* The Start Button */
 #start-button {
+  font-size: 1.5em;
+  font-weight: bold;  
   margin: 3em 0em 1em;
   border: 3px solid #333; /* Bold black border */
   border-radius: 12px; /* Slightly rounded corners for the tiles */
@@ -75,7 +77,7 @@ body {
   border-radius: 5px; /* Slightly rounded corners for the tiles */
   background-color: #FFFFFF; /* White tile background */
   color: #333; /* Dark text color */
-  font-size: 24px; /* Larger font size for better visibility */
+  font-size: 36px; /* Larger font size for better visibility */
   font-weight: bold; /* Bold font weight */
   cursor: grab; /* Cursor indicates that the tile is draggable */
   user-select: none;
