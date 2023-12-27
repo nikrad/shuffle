@@ -2,6 +2,7 @@
 
 import { Sortable, Plugins } from "./draggable.js";
 
+const words = ["ALUMNA", "MANUAL"];
 let startTime;
 let timeout;
 let elapsedTime = 0;
@@ -37,7 +38,6 @@ function formatTime(milliseconds) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  const words = ["INSULT", "SUNLIT"];
   let currentWord = words[0].split("");
 
   // Reference to the modal and start button

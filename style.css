@@ -1,3 +1,7 @@
+:root {
+  --tile-size: 42px; /* Variable for the tile size */
+}
+
 body {
   background-color: #FFD23F; /* Bright yellow background */
   font-family: -apple-system, BlinkMacSystemFont, "San Francisco", Roboto, "Segoe UI", Helvetica, "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -106,13 +110,13 @@ body {
 /* Media query for mobile screens */
 @media screen and (max-width: 600px) {
   .tile {
-      width: 40px !important; /* Adjust for mobile */
-      height: 40px !important; /* Adjust for mobile */
-      font-size: 24px; /* Adjust font size for mobile */
-      line-height: 40px; /* Center the text vertically */      
-      margin: 6px;
-      box-shadow: 3px 3px 0px #333; /* Add a shadow to give a lifted effect */
-  }
+    width: var(--tile-size) !important; /* Adjust for mobile */
+    height: var(--tile-size) !important; /* Adjust for mobile */
+    font-size: 24px; /* Adjust font size for mobile */
+    line-height: var(--tile-size); /* Center the text vertically */      
+    margin: 5px;
+    box-shadow: 3px 3px 0px #333; /* Add a shadow to give a lifted effect */
+}
 
   .draggable-container {
     margin: 0.2em;
@@ -121,6 +125,13 @@ body {
   #result-message {
     font-size: 1.25em; /* Large text size for emphasis */
     height: 1.25em;
+  }
+
+  html, body {
+    overflow-x: hidden;
+  }
+  body {
+    position: relative;
   }
 }
 
