@@ -1,5 +1,5 @@
 :root {
-  --tile-size: 42px; /* Variable for the tile size */
+  --tile-size: 45px; /* Variable for the tile size */
 }
 
 body {
@@ -180,9 +180,9 @@ body {
     height: var(--tile-size) !important; /* Adjust for mobile */
     font-size: 24px; /* Adjust font size for mobile */
     line-height: var(--tile-size); /* Center the text vertically */      
-    margin: 5px;
+    margin: 3px;
     box-shadow: 3px 3px 0px #333; /* Add a shadow to give a lifted effect */
-}
+  }
 
   .draggable-container {
     margin: 0.2em;

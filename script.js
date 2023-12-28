@@ -1,5 +1,3 @@
-// https://shopify.github.io/draggable/examples/sort-animation.html
-
 import { Sortable, Plugins } from "./draggable.js";
 
 const words = ["CLEATS", "CASTLE"];
@@ -98,7 +96,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function highlightCorrectTile(tile, index, targetWord) {
     if (tile.textContent === targetWord[index]) {
-      console.log(tile);
       tile.classList.add("correct-position"); // Highlight the tile if it's correct
       setTimeout(() => {
         tile.classList.remove("correct-position"); // Remove the highlight after a short delay
