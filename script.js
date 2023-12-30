@@ -1,9 +1,10 @@
 import { Sortable, Plugins } from "./draggable.js";
 
-const words = ["BISTRO", "ORBITS"];
+const words = ["URINALS", "INSULAR"];
 let startTime;
 let timeout;
 let elapsedTime = 0;
+let toggleHints = false;
 
 function startTimer() {
   startTime = Date.now() - elapsedTime;
@@ -49,6 +50,17 @@ document.addEventListener("DOMContentLoaded", function () {
   startButton.addEventListener("click", function () {
     startTimer(); // Start the timer
     modal.style.display = "none"; // Hide the modal
+  });
+
+  // Add this inside your DOMContentLoaded event handler
+  const toggleHintsCheckbox = document.getElementById("disable-hints");
+  toggleHintsCheckbox.addEventListener("change", () => {
+    toggleHints = toggleHintsCheckbox.checked;
+    if (toggleHints) {
+      console.log("Hints enabled");
+    } else {
+      console.log("Hints disabled");
+    }
   });
 
   function doTheWave() {
@@ -139,7 +151,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Reset the styles after dragging stops
     evt.source.style.width = "";
     evt.source.style.height = "";
-    if (!checkAnswer()) {
+    if (!checkAnswer() && toggleHints) {
       setTimeout(() => {
         const droppedTile = document.querySelector(".draggable-source--placed");
         const tileIndex = Array.from(

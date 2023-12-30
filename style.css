@@ -31,7 +31,6 @@ body {
   width: 75%; /* Could be more or less, depending on screen size */
   text-align: center;
   box-shadow: 4px 4px 0px #333; /* Add a shadow to give a lifted effect */
-
 }
 
 .instructions {
@@ -170,12 +169,12 @@ body {
 
   }
 
-
   #timer {
     margin: 0.75em;
   }
   
   .tile {
+    --tile-size: 40px; /* Variable for the tile size */    
     width: var(--tile-size) !important; /* Adjust for mobile */
     height: var(--tile-size) !important; /* Adjust for mobile */
     font-size: 24px; /* Adjust font size for mobile */
@@ -195,8 +194,69 @@ body {
 
   html, body {
     overflow: hidden;
+    margin: 4px 0px;
   }
   body {
     position: relative;
   }
+
+  .modal-content {
+    margin: 25% auto; /* 15% from the top and centered */
+    padding: 3em 0px;
+    width: 90%; /* Could be more or less, depending on screen size */
+  }  
+}
+
+/* iOS-style toggle styles */
+#toggle-hints {
+  text-align: center;
+  margin: 5em 0 1em 0;
+}
+
+#toggle-hints label {
+  margin-right: 10px;
+  font-weight: bold;
+  vertical-align: middle; /* Align label vertically */
+}
+
+#toggle-hints input[type="checkbox"] {
+  display: none;
+}
+
+#toggle-hints input[type="checkbox"] + label {
+  position: relative;
+  padding-left: 60px;
+  cursor: pointer;
+}
+
+#toggle-hints input[type="checkbox"] + label:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 44px;
+  height: 24px;
+  background-color: #ccc;
+  border-radius: 12px;
+  transition: background-color 0.3s ease;
+}
+
+#toggle-hints input[type="checkbox"]:checked + label:before {
+  background-color: #4cd964; /* iOS green color */
+}
+
+#toggle-hints input[type="checkbox"] + label:after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  width: 16px;
+  height: 16px;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+#toggle-hints input[type="checkbox"]:checked + label:after {
+  transform: translateX(20px); /* Move the knob to the right when checked */
 }
