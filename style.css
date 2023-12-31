@@ -24,7 +24,7 @@ body {
 .modal-content {
   font-size: 1em; /* Large text size for emphasis */  
   background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
+  margin: 5% auto; /* 15% from the top and centered */
   padding: 5em 0px;
   border: 3px solid #333; /* Bold black border */
   border-radius: 5px; /* Slightly rounded corners for the tiles */
@@ -36,26 +36,29 @@ body {
 .instructions {
   font-size: 1.5em; /* Large text size for emphasis */
   margin: auto auto;
+  padding: 0 10%;
+  text-align: left;
+}
+
+.modal-header {
+  text-align: left;
   font-weight: bold;
-  min-width: 100;
-  max-width: 20em;
-  padding: 0 10px;
+  font-size: 1.5em;
+  padding: 0 10%;
+  margin-bottom: 0.1em;
 }
 
 /* The Start Button */
 #start-button {
   font-size: 1.5em;
   font-weight: bold;  
-  margin: 3em 0em 1em;
+  margin: 8% 0 0;
   border: 3px solid #333; /* Bold black border */
   border-radius: 12px; /* Slightly rounded corners for the tiles */
   cursor: pointer;
   box-shadow: 2px 2px 0px #333; /* Add a shadow to give a lifted effect */
   box-shadow: 4px 4px 0px #0f39234f;
   color: white;
-  /* -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: black;
-  text-shadow: 2px 2px 1px #333; */
   background-color: #0079ff;
   letter-spacing: 0.5px;
   font-size: 1.5em; /* Large text size for emphasis */    
@@ -166,7 +169,6 @@ body {
 
   #result-message {
     padding: 12px 20px;
-
   }
 
   #timer {
@@ -181,6 +183,8 @@ body {
     line-height: var(--tile-size); /* Center the text vertically */      
     margin: 3px;
     box-shadow: 3px 3px 0px #333; /* Add a shadow to give a lifted effect */
+    -webkit-user-select: none;
+    user-select: none;
   }
 
   .draggable-container {

@@ -1,6 +1,6 @@
 import { Sortable, Plugins } from "./draggable.js";
 
-const words = ["URINALS", "INSULAR"];
+const words = ["SNARLED", "SLANDER"];
 let startTime;
 let timeout;
 let elapsedTime = 0;
