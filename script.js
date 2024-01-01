@@ -1,10 +1,49 @@
 import { Sortable, Plugins } from "./draggable.js";
 
-const words = ["SNARLED", "SLANDER"];
+let words = []; // Initialize an empty array for words
 let startTime;
 let timeout;
 let elapsedTime = 0;
 let toggleHints = false;
+
+function getEasternTimeDate() {
+  // Create a new Date object for the current time
+  const now = new Date();
+
+  // Convert to Eastern Time
+  // 'toLocaleString' allows specifying a timezone
+  const easternTime = now.toLocaleString("en-US", {
+    timeZone: "America/New_York",
+  });
+
+  // Convert the Eastern Time string back to a Date object
+  const etDate = new Date(easternTime);
+
+  // Extract year, month, and day
+  const year = etDate.getFullYear();
+  const month = (etDate.getMonth() + 1).toString().padStart(2, "0"); // months are 0-indexed
+  const day = etDate.getDate().toString().padStart(2, "0");
+
+  // Format as "YYYY-MM-DD"
+  return `${year}-${month}-${day}`;
+}
+
+// Function to fetch words from JSON file
+async function loadWords() {
+  try {
+    const response = await fetch("words.json");
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const wordData = await response.json();
+    const date = getEasternTimeDate();
+    console.log(date);
+    words = wordData[date];
+    console.log(words);
+  } catch (e) {
+    console.error("Failed to load words:", e);
+  }
+}
 
 function startTimer() {
   startTime = Date.now() - elapsedTime;
@@ -36,7 +75,14 @@ function formatTime(milliseconds) {
   return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
 }
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
+  await loadWords(); // Load words before proceeding
+
+  if (words.length === 0) {
+    console.error("No words loaded. Check your JSON file and fetch call.");
+    return;
+  }
+
   let currentWord = words[0].split("");
 
   // Reference to the modal and start button
