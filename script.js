@@ -13,7 +13,7 @@ function getEasternTimeDate() {
   // Convert to Eastern Time
   // 'toLocaleString' allows specifying a timezone
   const easternTime = now.toLocaleString("en-US", {
-    timeZone: "America/New_York",
+    timeZone: "America/Los_Angeles",
   });
 
   // Convert the Eastern Time string back to a Date object
