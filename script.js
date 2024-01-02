@@ -6,26 +6,24 @@ let timeout;
 let elapsedTime = 0;
 let toggleHints = false;
 
-function getEasternTimeDate() {
-  // Create a new Date object for the current time
-  const now = new Date();
-
-  // Convert to Eastern Time
-  // 'toLocaleString' allows specifying a timezone
-  const easternTime = now.toLocaleString("en-US", {
+function daysSinceJanFirst2024PT() {
+  // Create a date object for the current date/time in Pacific Timezone
+  let now = new Date().toLocaleString("en-US", {
     timeZone: "America/Los_Angeles",
   });
+  now = new Date(now);
 
-  // Convert the Eastern Time string back to a Date object
-  const etDate = new Date(easternTime);
+  // Create a date object for January 1, 2024, in Pacific Timezone
+  let janFirst2024 = new Date("2024-01-01T00:00:00-08:00"); // PT is UTC-8
 
-  // Extract year, month, and day
-  const year = etDate.getFullYear();
-  const month = (etDate.getMonth() + 1).toString().padStart(2, "0"); // months are 0-indexed
-  const day = etDate.getDate().toString().padStart(2, "0");
+  // Calculate the difference in milliseconds
+  let differenceInMilliseconds = now - janFirst2024;
 
-  // Format as "YYYY-MM-DD"
-  return `${year}-${month}-${day}`;
+  // Convert milliseconds to days
+  let differenceInDays = differenceInMilliseconds / (1000 * 60 * 60 * 24);
+
+  // Round down to get a whole number and return
+  return Math.floor(differenceInDays);
 }
 
 // Function to fetch words from JSON file
@@ -36,8 +34,8 @@ async function loadWords() {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     const wordData = await response.json();
-    const date = getEasternTimeDate();
-    words = wordData[date];
+    const dayIndex = daysSinceJanFirst2024PT();
+    words = wordData[dayIndex];
   } catch (e) {
     console.error("Failed to load words:", e);
   }
@@ -136,7 +134,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       .join("");
     if (currentOrder === words[1]) {
       stopTimer();
-      resultMessage.textContent = "Woot!";
+      resultMessage.textContent = "Way to go!";
       resultMessage.className = "correct-answer";
       draggable.destroy();
       setTimeout(() => {
