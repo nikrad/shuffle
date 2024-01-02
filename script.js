@@ -37,9 +37,7 @@ async function loadWords() {
     }
     const wordData = await response.json();
     const date = getEasternTimeDate();
-    console.log(date);
     words = wordData[date];
-    console.log(words);
   } catch (e) {
     console.error("Failed to load words:", e);
   }
