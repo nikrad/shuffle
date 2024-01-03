@@ -99,6 +99,7 @@ body {
 }
 
 #result-message {
+  display: none;
   text-align: center;
   font-size: 1.5em; /* Large text size for emphasis */
   font-weight: bold; /* Make the text bold */
@@ -130,12 +131,14 @@ body {
 }
 
 /* Additional styling when the answer is correct */
-.correct-answer {
+#result-message.correct-answer {
+  display: block;  
   transition: all 0.2s ease-in-out; /* Smooth transition for any changes */
   background-color: #44ed93; /* A green similar to the Draggable JS elements */
   border: 3px solid #333; /* Bold black border */
   border-radius: 12px; /* Slightly rounded corners for the tiles */
-  box-shadow: 4px 4px 0px #0f39234f
+  box-shadow: 4px 4px 0px #0f39234f;
+  cursor: pointer;
 }
 
 .tile.correct-position {

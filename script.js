@@ -5,6 +5,7 @@ let startTime;
 let timeout;
 let elapsedTime = 0;
 let toggleHints = false;
+let dayIndex = 0;
 
 function daysSinceJanFirst2024PT() {
   // Create a date object for the current date/time in Pacific Timezone
@@ -34,7 +35,7 @@ async function loadWords() {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     const wordData = await response.json();
-    const dayIndex = daysSinceJanFirst2024PT();
+    dayIndex = daysSinceJanFirst2024PT();
     words = wordData[dayIndex];
   } catch (e) {
     console.error("Failed to load words:", e);
@@ -89,7 +90,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   modal.style.display = "block";
 
   // Start button click event
-  startButton.addEventListener("click", function () {
+  startButton.addEventListener("click", () => {
     startTimer(); // Start the timer
     modal.style.display = "none"; // Hide the modal
   });
@@ -102,6 +103,29 @@ document.addEventListener("DOMContentLoaded", async function () {
       console.log("Hints enabled");
     } else {
       console.log("Hints disabled");
+    }
+  });
+
+  var resultMessage = document.getElementById("result-message");
+  resultMessage.addEventListener("click", () => {
+    const time = formatTime(elapsedTime);
+    const hintStr = toggleHints ? "w/ hints" : "w/o hints";
+    const shareMsg = `⏱️ ${time} ${hintStr}! (Shuffle puzzle ${dayIndex})`;
+
+    if (navigator.share) {
+      navigator.share({ text: shareMsg }).catch(console.error);
+    } else {
+      navigator.clipboard
+        .writeText(shareMsg)
+        .then(() => {
+          resultMessage.textContent = "Copied to clipboard!";
+          setTimeout(() => {
+            resultMessage.textContent = "Woot! Share results ↗️";
+          }, 1000);
+        })
+        .catch((err) => {
+          console.error("Error in copying text: ", err);
+        });
     }
   });
 
@@ -134,7 +158,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       .join("");
     if (currentOrder === words[1]) {
       stopTimer();
-      resultMessage.textContent = "Way to go!";
+      resultMessage.textContent = "Woot! Share results ↗️";
       resultMessage.className = "correct-answer";
       draggable.destroy();
       setTimeout(() => {
