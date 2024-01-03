@@ -87,6 +87,7 @@ body {
   font-size: 36px; /* Larger font size for better visibility */
   font-weight: bold; /* Bold font weight */
   cursor: grab; /* Cursor indicates that the tile is draggable */
+  -webkit-user-select: none;
   user-select: none;
   box-shadow: 4px 4px 0px #333; /* Add a shadow to give a lifted effect */
   text-align: center; /* Ensure the text is centered horizontally */
@@ -172,6 +173,10 @@ body {
 
   #result-message {
     padding: 12px 20px;
+    -webkit-user-select: none;
+    user-select: none;
+    font-size: 1.25em; /* Large text size for emphasis */
+    height: 1.25em;    
   }
 
   #timer {
@@ -186,17 +191,10 @@ body {
     line-height: var(--tile-size); /* Center the text vertically */      
     margin: 3px;
     box-shadow: 3px 3px 0px #333; /* Add a shadow to give a lifted effect */
-    -webkit-user-select: none;
-    user-select: none;
   }
 
   .draggable-container {
     margin: 0.2em;
-  }
-
-  #result-message {
-    font-size: 1.25em; /* Large text size for emphasis */
-    height: 1.25em;
   }
 
   html, body {

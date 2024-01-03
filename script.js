@@ -199,6 +199,11 @@ document.addEventListener("DOMContentLoaded", async function () {
         duration: 200,
         easingFunction: "ease-in-out",
       },
+      delay: {
+        mouse: 0,
+        drag: 0,
+        touch: 0,
+      },
     }
   );
 
