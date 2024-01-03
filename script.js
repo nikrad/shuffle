@@ -7,15 +7,15 @@ let elapsedTime = 0;
 let toggleHints = false;
 let dayIndex = 0;
 
-function daysSinceJanFirst2024PT() {
+function daysSinceJanFirst2024() {
   // Create a date object for the current date/time in Pacific Timezone
   let now = new Date().toLocaleString("en-US", {
-    timeZone: "America/Los_Angeles",
+    timeZone: "America/New_York",
   });
   now = new Date(now);
 
-  // Create a date object for January 1, 2024, in Pacific Timezone
-  let janFirst2024 = new Date("2024-01-01T00:00:00-08:00"); // PT is UTC-8
+  // Create a date object for January 1, 2024, in Eastern Timezone
+  let janFirst2024 = new Date("2024-01-01T00:00:00-05:00"); // PT is UTC-5
 
   // Calculate the difference in milliseconds
   let differenceInMilliseconds = now - janFirst2024;
@@ -35,7 +35,7 @@ async function loadWords() {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     const wordData = await response.json();
-    dayIndex = daysSinceJanFirst2024PT();
+    dayIndex = daysSinceJanFirst2024();
     words = wordData[dayIndex];
   } catch (e) {
     console.error("Failed to load words:", e);
@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   resultMessage.addEventListener("click", () => {
     const time = formatTime(elapsedTime);
     const hintStr = toggleHints ? "w/ hints" : "w/o hints";
-    const shareMsg = `⏱️ ${time} ${hintStr}! (Shuffle puzzle ${dayIndex})`;
+    const shareMsg = `⏱️ ${time} ${hintStr}! (Shuffle puzzle #${dayIndex})`;
 
     if (navigator.share) {
       navigator.share({ text: shareMsg }).catch(console.error);
