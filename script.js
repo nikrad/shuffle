@@ -8,13 +8,10 @@ let toggleHints = false;
 let dayIndex = 0;
 
 function daysSinceJanFirst2024() {
-  // Create a date object for the current date/time in Pacific Timezone
   let now = new Date().toLocaleString("en-US", {
     timeZone: "America/New_York",
   });
   now = new Date(now);
-
-  // Create a date object for January 1, 2024, in Eastern Timezone
   let janFirst2024 = new Date("2024-01-01T00:00:00-05:00"); // PT is UTC-5
 
   // Calculate the difference in milliseconds
@@ -95,7 +92,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     modal.style.display = "none"; // Hide the modal
   });
 
-  // Add this inside your DOMContentLoaded event handler
   const toggleHintsCheckbox = document.getElementById("disable-hints");
   toggleHintsCheckbox.addEventListener("change", () => {
     toggleHints = toggleHintsCheckbox.checked;
@@ -110,7 +106,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   resultMessage.addEventListener("click", () => {
     const time = formatTime(elapsedTime);
     const hintStr = toggleHints ? "w/ hints" : "w/o hints";
-    const shareMsg = `⏱️ ${time} ${hintStr}! (Shuffle puzzle #${dayIndex})`;
+    const shareMsg = `⏱️ ${time} ${hintStr}! (Shuffle #${dayIndex})`;
 
     if (navigator.share) {
       navigator.share({ text: shareMsg }).catch(console.error);
@@ -225,7 +221,8 @@ document.addEventListener("DOMContentLoaded", async function () {
             ".tile:not(.draggable--original):not(.draggable-mirror)"
           )
         ).indexOf(droppedTile);
-        highlightCorrectTile(droppedTile, tileIndex, words[1]); // Highlight the correct tile
+        // Highlight the correct tile
+        highlightCorrectTile(droppedTile, tileIndex, words[1]);
       }, 0);
     }
   });
