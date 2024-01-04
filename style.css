@@ -65,10 +65,6 @@ body {
   padding: 0.8em 1.5em;  
 }
 
-/* ... existing styles ... */
-
-
-
 #game-container {
   text-align: center;
 }
@@ -134,12 +130,16 @@ body {
 /* Additional styling when the answer is correct */
 #result-message.correct-answer {
   display: block;  
-  transition: all 0.2s ease-in-out; /* Smooth transition for any changes */
   background-color: #44ed93; /* A green similar to the Draggable JS elements */
   border: 3px solid #333; /* Bold black border */
   border-radius: 12px; /* Slightly rounded corners for the tiles */
   box-shadow: 4px 4px 0px #0f39234f;
   cursor: pointer;
+}
+
+#result-message:active {
+  box-shadow: 2px 2px 0px #0f39234f;
+  transform: translate(2px, 2px);
 }
 
 .tile.correct-position {
@@ -165,7 +165,6 @@ body {
   text-align: center;
   font-size: 2em;
   margin: 1.5em;
-  /* Add any additional styling you need here */
 }
 
 /* Media query for mobile screens */

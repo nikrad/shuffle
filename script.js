@@ -8,14 +8,21 @@ let toggleHints = false;
 let dayIndex = 0;
 
 function daysSinceJanFirst2024() {
-  let now = new Date().toLocaleString("en-US", {
+  let nowInNY = new Date().toLocaleString("en-US", {
     timeZone: "America/New_York",
   });
-  now = new Date(now);
-  let janFirst2024 = new Date("2024-01-01T00:00:00-05:00"); // PT is UTC-5
+  nowInNY = new Date(nowInNY);
+
+  let janFirst2024InNY = new Date("2024-01-01T00:00:00-05:00").toLocaleString(
+    "en-US",
+    {
+      timeZone: "America/New_York",
+    }
+  );
+  janFirst2024InNY = new Date(janFirst2024InNY);
 
   // Calculate the difference in milliseconds
-  let differenceInMilliseconds = now - janFirst2024;
+  let differenceInMilliseconds = nowInNY - janFirst2024InNY;
 
   // Convert milliseconds to days
   let differenceInDays = differenceInMilliseconds / (1000 * 60 * 60 * 24);
@@ -202,7 +209,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       delay: {
         mouse: 0,
         drag: 0,
-        touch: 0,
+        touch: 5,
       },
     }
   );
