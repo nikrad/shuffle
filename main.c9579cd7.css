@@ -34,7 +34,7 @@ body {
 }
 
 .instructions {
-  font-size: 1.5em; /* Large text size for emphasis */
+  font-size: 1.25em; /* Large text size for emphasis */
   margin: auto auto;
   padding: 0 10%;
   text-align: left;

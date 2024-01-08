@@ -7,7 +7,7 @@ let elapsedTime = 0;
 let toggleHints = false;
 let dayIndex = 0;
 
-function daysSinceJanFirst2024() {
+function daysSinceJanFirst2024ET() {
   let nowInNY = new Date().toLocaleString("en-US", {
     timeZone: "America/New_York",
   });
@@ -31,15 +31,41 @@ function daysSinceJanFirst2024() {
   return Math.floor(differenceInDays);
 }
 
+function daysSinceJanFirst2024PT() {
+  // Get the current date in Pacific Time
+  let nowInPT = new Date().toLocaleString("en-US", {
+    timeZone: "America/Los_Angeles",
+  });
+  nowInPT = new Date(nowInPT);
+
+  // Set January 1st, 2024 date in Pacific Time
+  let janFirst2024InPT = new Date("2024-01-01T00:00:00-08:00").toLocaleString(
+    "en-US",
+    {
+      timeZone: "America/Los_Angeles",
+    }
+  );
+  janFirst2024InPT = new Date(janFirst2024InPT);
+
+  // Calculate the difference in milliseconds
+  let differenceInMilliseconds = nowInPT - janFirst2024InPT;
+
+  // Convert milliseconds to days
+  let differenceInDays = differenceInMilliseconds / (1000 * 60 * 60 * 24);
+
+  // Round down to get a whole number and return
+  return Math.floor(differenceInDays);
+}
+
 // Function to fetch words from JSON file
 async function loadWords() {
   try {
-    const response = await fetch("words.json");
+    const response = await fetch("words.c9579cd7.json");
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     const wordData = await response.json();
-    dayIndex = daysSinceJanFirst2024();
+    dayIndex = daysSinceJanFirst2024ET();
     words = wordData[dayIndex];
   } catch (e) {
     console.error("Failed to load words:", e);
