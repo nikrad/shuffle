@@ -24,7 +24,7 @@ body {
 .modal-content {
   font-size: 1em; /* Large text size for emphasis */  
   background-color: #fefefe;
-  margin: 5% auto; /* 15% from the top and centered */
+  margin: auto; /* 15% from the top and centered */
   padding: 5em 0px;
   border: 3px solid #333; /* Bold black border */
   border-radius: 5px; /* Slightly rounded corners for the tiles */
