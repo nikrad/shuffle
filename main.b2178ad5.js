@@ -60,7 +60,7 @@ function daysSinceJanFirst2024PT() {
 // Function to fetch words from JSON file
 async function loadWords() {
   try {
-    const response = await fetch("words.c9579cd7.json");
+    const response = await fetch("words.b2178ad5.json");
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
